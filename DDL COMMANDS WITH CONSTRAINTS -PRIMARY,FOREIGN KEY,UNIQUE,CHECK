@@ -1,0 +1,104 @@
+1)
+mysql> use db_department;
+Database changed
+mysql> desc table_student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| reg_no    | int(10)     | NO   | PRI | 0       |       |
+| name      | varchar(10) | YES  |     | NULL    |       |
+| gender    | varchar(10) | YES  |     | NULL    |       |
+| DOB       | int(10)     | YES  |     | NULL    |       |
+| DOJ       | int(10)     | YES  |     | NULL    |       |
+| mobile_no | int(10)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+6 rows in set (0.11 sec)
+
+
+2)
+mysql> alter table faculty add primary key(faculty_no);
+Query OK, 0 rows affected (0.22 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> alter table faculty add check(gender ='M' or 'F');
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc faculty;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| faculty_no | int(10)     | NO   | PRI | 0       |       |
+| name       | varchar(10) | YES  |     | NULL    |       |
+| mobile_no  | int(10)     | YES  |     | NULL    |       |
+| deptno     | int(10)     | YES  |     | NULL    |       |
+| gender     | varchar(1)  | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+5 rows in set (0.09 sec)
+
+
+3)
+mysql> alter table table_faculty add foreign key (dep_no) references table_department (dep_no);
+Query OK, 0 rows affected (0.28 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc table_faculty;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| faculty_no    | int(10)     | NO   | PRI | 0       |       |
+| faculty_name  | varchar(10) | YES  |     | NULL    |       |
+| mobile_no     | int(10)     | YES  |     | NULL    |       |
+| dateofjoin    | int(10)     | YES  |     | NULL    |       |
+| column_deptno | varchar(10) | YES  |     | NULL    |       |
+| dep_no        | int(10)     | YES  | MUL | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+6 rows in set (0.17 sec)
+
+4)
+mysql> alter table department add primary key(deptno);
+Query OK, 0 rows affected (0.23 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc department;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| deptno    | int(10)     | NO   | PRI | 0       |       |
+| dept_name | varchar(10) | YES  |     | NULL    |       |
+| dept_head | varchar(10) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.08 sec)
+
+5)
+mysql> alter table table_course add primary key(course_no);
+Query OK, 0 rows affected (0.28 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc table_course;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Course_no   | int(10)     | NO   | PRI | 0       |       |
+| Course_desc | int(10)     | YES  |     | NULL    |       |
+| Course_type | varchar(10) | YES  |     | NULL    |       |
+| sem_no      | int(10)     | YES  |     | NULL    |       |
+| hall_no     | int(10)     | YES  |     | NULL    |       |
+| fac_no      | int(10)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.08 sec)
+
+mysql> alter table table_course add check (sem_no>=1 && sem_no<=6);
+Query OK, 0 rows affected (0.17 sec)
+Records: 0  Duplicates: 0  Warnings: 0mysql>  desc table_course;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Course_no   | int(10)     | NO   | PRI | 0       |       |
+| Course_desc | int(10)     | YES  |     | NULL    |       |
+| Course_type | varchar(10) | YES  |     | NULL    |       |
+| sem_no      | int(10)     | YES  |     | NULL    |       |
+| hall_no     | int(10)     | YES  |     | NULL    |       |
+| fac_no      | int(10)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+6 rows in set (0.02 sec)
