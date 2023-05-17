@@ -1,0 +1,104 @@
+GROUP BY - HAVING
+1)
+mysql> select * from courses;
++--------+-----------+-------------+-------+
+| stu_id | course_no | course_name | marks |
++--------+-----------+-------------+-------+
+|      1 | c001      | mathematics |    45 |
+|      2 | c002      | physics     |    54 |
+|      3 | c003      | chemistry   |    94 |
+|      4 | c004      | dbms        |    74 |
+|      5 | c005      | java        |    64 |
+|      1 | c002      | physics     |    53 |
+|      1 | c005      | java        |    63 |
++--------+-----------+-------------+-------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT COURSE_NAME,COUNT(STU_ID) FROM COURSES GROUP BY COURSE_NAME;
++-------------+---------------+
+| COURSE_NAME | COUNT(STU_ID) |
++-------------+---------------+
+| chemistry   |             1 |
+| dbms        |             1 |
+| java        |             2 |
+| mathematics |             1 |
+| physics     |             2 |
++-------------+---------------+
+5 rows in set (0.00 sec)
+
+2)
+mysql> select * from courses;
++--------+-----------+-------------+-------+
+| stu_id | course_no | course_name | marks |
++--------+-----------+-------------+-------+
+|      1 | c001      | mathematics |    45 |
+|      2 | c002      | physics     |    54 |
+|      3 | c003      | chemistry   |    94 |
+|      4 | c004      | dbms        |    74 |
+|      5 | c005      | java        |    64 |
+|      1 | c002      | physics     |    53 |
+|      1 | c005      | java        |    63 |
++--------+-----------+-------------+-------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT COURSE_NAME, COUNT(STU_ID) FROM COURSES GROUP BY STU_ID;
++-------------+---------------+
+| COURSE_NAME | COUNT(STU_ID) |
++-------------+---------------+
+| mathematics |             3 |
+| physics     |             1 |
+| chemistry   |             1 |
+| dbms        |             1 |
+| java        |             1 |
++-------------+---------------+
+5 rows in set (0.00 sec)
+
+ORDER BY.
+
+1)
+mysql> SELECT * FROM STUDENTS;
++-------+-----------+------------+-----------+
+| NAME  | REG_NO    | DOB        | MOBILE_NO |
++-------+-----------+------------+-----------+
+| KIRAN | 192211888 | 2000-04-09 | 963214587 |
+| ANIL  | 192211889 | 2000-05-03 |  78954564 |
+| SHYAM | 192211444 | 2004-03-02 |   6325974 |
+| HARI  | 192343222 | 2000-04-02 |   7954632 |
+| HEMA  | 192211555 | 2003-03-03 |   7896523 |
++-------+-----------+------------+-----------+
+5 rows in set (0.00 sec)
+
+mysql> SELECT NAME,MOBILE_NO,REG_NO FROM STUDENTS ORDER BY NAME;
++-------+-----------+-----------+
+| NAME  | MOBILE_NO | REG_NO    |
++-------+-----------+-----------+
+| ANIL  |  78954564 | 192211889 |
+| HARI  |   7954632 | 192343222 |
+| HEMA  |   7896523 | 192211555 |
+| KIRAN | 963214587 | 192211888 |
+| SHYAM |   6325974 | 192211444 |
++-------+-----------+-----------+
+5 rows in set (0.00 sec)
+
+2)
+mysql> SELECT * FROM FACULTY_MEMBERS;
++--------+------------+--------+---------------+
+| NAME   | DOB        | GENDER | DOJ           |
++--------+------------+--------+---------------+
+| HEMA   | 1989-09-20 | FEMALE | NOVEMBER 2009 |
+| THARUN | 1979-08-03 | MALE   | FEBUARY 2005  |
+| HIMAJA | 1992-08-02 | FEMALE | JANUARY 2020  |
+| ARYA   | 1990-03-03 | MALE   | MARCH 2010    |
++--------+------------+--------+---------------+
+4 rows in set (0.00 sec)
+
+mysql> SELECT * FROM FACULTY_MEMBERS ORDER BY DOB;
++--------+------------+--------+---------------+
+| NAME   | DOB        | GENDER | DOJ           |
++--------+------------+--------+---------------+
+| THARUN | 1979-08-03 | MALE   | FEBUARY 2005  |
+| HEMA   | 1989-09-20 | FEMALE | NOVEMBER 2009 |
+| ARYA   | 1990-03-03 | MALE   | MARCH 2010    |
+| HIMAJA | 1992-08-02 | FEMALE | JANUARY 2020  |
++--------+------------+--------+---------------+
+4 rows in set (0.00 sec)
