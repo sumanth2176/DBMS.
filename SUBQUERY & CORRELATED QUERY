@@ -1,0 +1,131 @@
+1)
+mysql> desc courses;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| stu_id      | int(10)     | YES  |     | NULL    |       |
+| course_no   | varchar(20) | YES  |     | NULL    |       |
+| course_name | varchar(20) | YES  |     | NULL    |       |
+| marks       | int(10)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+4 rows in set (0.03 sec)
+
+mysql> select * from courses;
++--------+-----------+-------------+-------+
+| stu_id | course_no | course_name | marks |
++--------+-----------+-------------+-------+
+|      1 | c001      | mathematics |    45 |
+|      2 | c002      | physics     |    54 |
+|      3 | c003      | chemistry   |    94 |
+|      4 | c004      | dbms        |    74 |
+|      5 | c005      | java        |    64 |
+|      6 | c002      | physics     |    53 |
+|      7 | c005      | java        |    63 |
++--------+-----------+-------------+-------+
+7 rows in set (0.00 sec)
+
+mysql> select stu_id, marks from courses where marks in(select marks from courses where marks>=50);
++--------+-------+
+| stu_id | marks |
++--------+-------+
+|      2 |    54 |
+|      3 |    94 |
+|      4 |    74 |
+|      5 |    64 |
+|      6 |    53 |
+|      7 |    63 |
++--------+-------+
+6 rows in set (0.00 sec)
+
+2)
+mysql> desc courses;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| stu_id      | int(10)     | YES  |     | NULL    |       |
+| course_no   | varchar(20) | YES  |     | NULL    |       |
+| course_name | varchar(20) | YES  |     | NULL    |       |
+| marks       | int(10)     | YES  |     | NULL    |       |
+| assignments | int(10)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+mysql> select * from courses;
++--------+-----------+-------------+-------+-------------+
+| stu_id | course_no | course_name | marks | assignments |
++--------+-----------+-------------+-------+-------------+
+|      1 | c001      | mathematics |    45 |           3 |
+|      2 | c002      | physics     |    54 |           4 |
+|      3 | c003      | chemistry   |    94 |           6 |
+|      4 | c004      | dbms        |    74 |           5 |
+|      5 | c005      | java        |    64 |           8 |
+|      6 | c002      | physics     |    53 |           3 |
+|      7 | c005      | java        |    63 |           3 |
++--------+-----------+-------------+-------+-------------+
+7 rows in set (0.00 sec)
+
+mysql> select stu_id, assignments from courses where assignments>3;
++--------+-------------+
+| stu_id | assignments |
++--------+-------------+
+|      2 |           4 |
+|      3 |           6 |
+|      4 |           5 |
+|      5 |           8 |
++--------+-------------+
+4 rows in set (0.00 sec)
+
+3)
+mysql> select * from faculty;
++------------+--------+-----------+--------+--------+------+-----------+
+| faculty_no | name   | mobile_no | deptno | gender | age  | DOJ       |
++------------+--------+-----------+--------+--------+------+-----------+
+|          1 | hari   | 789456123 |      3 | M      |   34 | JUNE 2020 |
+|          2 | getha  | 898737489 |      3 | F      |   65 | NOV 2020  |
+|          3 | RAMYA  |  98457589 |      3 | F      |   32 | NOV 2020  |
+|          4 | SHIVA  | 943535646 |      3 | M      |   43 | JAN 2O23  |
+|          5 | GIRISH |  94859594 |      3 | M      |   54 | NOV 2020  |
++------------+--------+-----------+--------+--------+------+-----------+
+5 rows in set (0.09 sec)
+
+mysql> select * from faculty order by doj;
++------------+--------+-----------+--------+--------+------+-----------+
+| faculty_no | name   | mobile_no | deptno | gender | age  | DOJ       |
++------------+--------+-----------+--------+--------+------+-----------+
+|          4 | SHIVA  | 943535646 |      3 | M      |   43 | JAN 2O23  |
+|          1 | hari   | 789456123 |      3 | M      |   34 | JUNE 2020 |
+|          2 | getha  | 898737489 |      3 | F      |   65 | NOV 2020  |
+|          3 | RAMYA  |  98457589 |      3 | F      |   32 | NOV 2020  |
+|          5 | GIRISH |  94859594 |      3 | M      |   54 | NOV 2020  |
++------------+--------+-----------+--------+--------+------+-----------+
+5 rows in set (0.02 sec)
+
+4)
+mysql> select * from courses;
++--------+-----------+-------------+-------+-------------+-------------+
+| stu_id | course_no | course_name | marks | assignments | assin_marks |
++--------+-----------+-------------+-------+-------------+-------------+
+|      1 | c001      | mathematics |    45 |           3 |          30 |
+|      2 | c002      | physics     |    54 |           4 |          40 |
+|      3 | c003      | chemistry   |    94 |           6 |          60 |
+|      4 | c004      | dbms        |    74 |           5 |          50 |
+|      5 | c005      | java        |    64 |           8 |          80 |
+|      6 | c002      | physics     |    53 |           3 |          30 |
+|      7 | c005      | java        |    63 |           3 |          30 |
++--------+-----------+-------------+-------+-------------+-------------+
+7 rows in set (0.00 sec)
+
+
+mysql> select course_name, assin_marks from courses ;
++-------------+-------------+
+| course_name | assin_marks |
++-------------+-------------+
+| mathematics |          30 |
+| physics     |          40 |
+| chemistry   |          60 |
+| dbms        |          50 |
+| java        |          80 |
+| physics     |          30 |
+| java        |          30 |
++-------------+-------------+
+7 rows in set (0.00 sec)
