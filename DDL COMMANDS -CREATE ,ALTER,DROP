@@ -1,0 +1,62 @@
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| db_dbms1           |
+| db_department      |
+| db_student         |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+7 rows in set (0.02 sec)
+
+mysql> use db_department;
+Database changed
+mysql> desc table_student;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| reg_no    | int(10)     | NO   | PRI | 0       |       |
+| name      | varchar(10) | YES  |     | NULL    |       |
+| gender    | varchar(10) | YES  |     | NULL    |       |
+| DOB       | int(10)     | YES  |     | NULL    |       |
+| DOJ       | int(10)     | YES  |     | NULL    |       |
+| mobile_no | int(10)     | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+6 rows in set (0.11 sec)
+
+mysql> desc table_faculty;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| faculty_no    | int(10)     | YES  |     | NULL    |       |
+| faculty_name  | varchar(10) | YES  |     | NULL    |       |
+| mobile_no     | int(10)     | YES  |     | NULL    |       |
+| dateofjoin    | int(10)     | YES  |     | NULL    |       |
+| column_deptno | varchar(10) | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+5 rows in set (0.06 sec)
+
+mysql> desc table_department;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| dep_no   | int(10)     | YES  |     | NULL    |       |
+| dep_name | varchar(10) | YES  |     | NULL    |       |
+| dep_head | varchar(10) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.14 sec)
+
+mysql> desc table_course;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| Course_no   | int(10)     | YES  |     | NULL    |       |
+| Course_desc | int(10)     | YES  |     | NULL    |       |
+| Course_type | varchar(10) | YES  |     | NULL    |       |
+| sem_no      | int(10)     | YES  |     | NULL    |       |
+| hall_no     | int(10)     | YES  |     | NULL    |       |
+| fac_no      | int(10)     | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
